@@ -28,8 +28,8 @@ public class Helper {
         return date == null;
     }
   
-    public static boolean isValidPrice(double Price){
-        if (Double.isNaN(Price)) {
+    public static boolean isValidPrice(double price){
+        if (Double.isNaN(price) || price <=0) {
             return true;
         }
         return false;
