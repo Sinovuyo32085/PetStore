@@ -1,5 +1,6 @@
 package za.ac.cput.domain.product;
-
+/*Oluhle Makhaye
+* 222419636*/
 
 public class Brand {
     private int brandID;
@@ -10,7 +11,8 @@ public class Brand {
     }
 
     private Brand(Builder builder){
-
+        this.brandID = builder.brandID;
+        this.brandName = builder.brandName;
     }
 
     public int getBrandID() {
@@ -33,12 +35,14 @@ public class Brand {
         private int brandID;
         private String brandName;
 
-        public void setBrandID(int brandID) {
+        public Builder setBrandID(int brandID) {
             this.brandID = brandID;
+            return this;
         }
 
-        public void setBrandName(String brandName) {
+        public Builder setBrandName(String brandName) {
             this.brandName = brandName;
+            return this;
         }
 
         public Brand copy(Brand brand){

@@ -2,7 +2,6 @@ package za.ac.cput.domain.product;
 
 import java.sql.Blob;
 import java.util.List;
-
 /*Oluhle Makhaye
 * 222419636
 * product class*/
@@ -15,7 +14,7 @@ public class Product {
     private double price;
     private int stock;
     private double weight;
-    //private Brand brand;
+    private Brand brand;
     private int lifeStageID;
     private int foodtypeID;
     private int petTypeID;
@@ -33,6 +32,7 @@ public class Product {
         rating = builder.rating;
         price = builder.price;
         stock = builder.stock;
+        brand = builder.brand;
         weight = builder.weight;
         lifeStageID = builder.lifeStageID;
         foodtypeID = builder.foodtypeID;
@@ -72,6 +72,10 @@ public class Product {
         return weight;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
     public int getLifeStageID() {
         return lifeStageID;
     }
@@ -103,6 +107,7 @@ public class Product {
                 ", price=" + price +
                 ", stock=" + stock +
                 ", weight=" + weight +
+                ", brand=" + brand +
                 ", lifeStageID=" + lifeStageID +
                 ", foodtypeID=" + foodtypeID +
                 ", petTypeID=" + petTypeID +
@@ -120,6 +125,7 @@ public class Product {
         private double price;
         private int stock;
         private double weight;
+        private Brand brand;
         private int lifeStageID;
         private int foodtypeID;
         private int petTypeID;
@@ -167,6 +173,11 @@ public class Product {
             return this;
         }
 
+        public Builder setBrand(Brand brand) {
+            this.brand = brand;
+            return this;
+        }
+
         public Builder setLifeStageID(int lifeStageID) {
             this.lifeStageID = lifeStageID;
             return this;
@@ -201,6 +212,7 @@ public class Product {
             this.price = product.price;
             this.stock = product.stock;
             this.weight = product.weight;
+            this.brand = product.brand;
             this.lifeStageID = product.lifeStageID;
             this.foodtypeID = product.foodtypeID;
             this.petTypeID = product.petTypeID;

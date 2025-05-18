@@ -1,18 +1,21 @@
 package za.ac.cput.domain.product;
+/*Oluhle Makhaye
+* 222419636*/
 
 public class PetType {
- private String petTypeID;
+ private int petTypeID;
  private String petTypeName;
 
  private PetType() {
 
  }
 
- private PetType(PetType.Builder builder){
-
+ private PetType(Builder builder){
+  petTypeID = builder.petTypeID;
+  petTypeName = builder.petTypeName;
  }
 
- public String getPetTypeID() {
+ public int getPetTypeID() {
   return petTypeID;
  }
 
@@ -29,15 +32,15 @@ public class PetType {
  }
 
  public static class Builder {
-  private String petTypeID;
+  private int petTypeID;
   private String petTypeName;
 
-  public PetType.Builder setPetTypeID(String petTypeID) {
+  public Builder setPetTypeID(int petTypeID) {
    this.petTypeID = petTypeID;
    return this;
   }
 
-  public PetType.Builder setPetTypeName(String PetTypeName) {
+  public Builder setPetTypeName(String petTypeName) {
    this.petTypeName = petTypeName;
    return this;
   }
