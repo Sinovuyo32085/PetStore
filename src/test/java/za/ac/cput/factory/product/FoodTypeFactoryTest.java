@@ -10,9 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 class FoodTypeFactoryTest {
-    private static PetType petType = PetTypeFactory.createPetType(1, "Cat");
-    private static FoodType validFoodType = FoodTypeFactory.createFoodType(2,"Wet Food",petType);
-    private static FoodType invalidFoodType = FoodTypeFactory.createFoodType(3,"",petType);
+    private static FoodType validFoodType = FoodTypeFactory.createFoodType(2,"Wet Food");
+    private static FoodType invalidFoodType = FoodTypeFactory.createFoodType(3,"");
 
 
     @Test

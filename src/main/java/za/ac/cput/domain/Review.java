@@ -1,34 +1,45 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+import za.ac.cput.domain.product.Product;
+import za.ac.cput.domain.user.User;
+@Entity
 public class Review {
 
+    @Id
     private int reviewId;
-    private int userId;
-    private int productId;
+
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "productID")
+    private Product product;
+
     private String review;
     private Float rating;
 
-    private Review() {}
+    protected Review() {}
 
     private Review(Builder builder) {
         this.reviewId = builder.reviewId;
-        this.userId = builder.userId;
-        this.productId = builder.productId;
+        this.user = builder.user;
+        this.product = builder.product;
         this.review = builder.review;
         this.rating = builder.rating;
     }
 
-
-    public Integer getReviewId() {
+    public int getReviewId() {
         return reviewId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
     public String getReview() {
@@ -43,50 +54,56 @@ public class Review {
     public String toString() {
         return "Review{" +
                 "reviewId=" + reviewId +
-                ", userId=" + userId +
-                ", productId=" + productId +
+                ", user=" + user +
+                ", product=" + product +
                 ", review='" + review + '\'' +
                 ", rating=" + rating +
                 '}';
     }
 
     public static class Builder {
-        private Integer reviewId;
-        private Integer userId;
-        private Integer productId;
+        private int reviewId;
+        private User user;
+        private Product product;
         private String review;
         private Float rating;
 
-
-        public Builder reviewId(Integer reviewId) {
+        public Builder setReviewId(int reviewId) {
             this.reviewId = reviewId;
             return this;
         }
 
-        public Builder userId(Integer userId) {
-            this.userId = userId;
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
-        public Builder productId(Integer productId) {
-            this.productId = productId;
+        public Builder setProduct(Product product) {
+            this.product = product;
             return this;
         }
 
-        public Builder review(String review) {
+        public Builder setReview(String review) {
             this.review = review;
             return this;
         }
 
-        public Builder rating(Float rating) {
+        public Builder setRating(Float rating) {
             this.rating = rating;
             return this;
         }
 
+        public Builder copy(Review review) {
+            this.reviewId = review.reviewId;
+            this.user = review.user;
+            this.product = review.product;
+            this.review = review.review;
+            this.rating = review.rating;
+            return this;
+        }
 
         public Review build() {
             return new Review(this);
         }
     }
-
 }

@@ -1,7 +1,6 @@
 package za.ac.cput.domain.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
@@ -10,8 +9,14 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id")
     private Card card;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shippingAddress_id")
     private ShippingAddress address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id")
     private Contact contact;
     private Role role;
 

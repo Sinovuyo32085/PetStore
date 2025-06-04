@@ -34,4 +34,10 @@ public class Helper {
         }
         return false;
     }
+
+    public static boolean isValidRating(Float rating) {
+        return rating != null && rating >= 0 && rating <= 10;
+    }
+
+
 }

@@ -1,71 +1,83 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
 import za.ac.cput.domain.product.Product;
+import za.ac.cput.domain.user.User;
 
 import java.util.List;
 
+@Entity
 public class Wishlist {
 
-    private Integer wishlistId;
-    private Integer userId;
-    private List<Product> item;
+    @Id
+    private int wishlistId;
 
-    private Wishlist() {}
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userID")
+    private User user;
+
+    @ManyToMany
+    @JoinTable
+    private List<Product> items;
+
+    protected Wishlist() {}
 
     private Wishlist(Builder builder) {
         this.wishlistId = builder.wishlistId;
-        this.userId = builder.userId;
-        this.item = builder.item;
+        this.user = builder.user;
+        this.items = builder.items;
     }
 
-
-    public Integer getWishlistId() {
+    public int getWishlistId() {
         return wishlistId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public List<Product> getItem() {
-        return item;
+    public List<Product> getItems() {
+        return items;
     }
 
     @Override
     public String toString() {
         return "Wishlist{" +
                 "wishlistId=" + wishlistId +
-                ", userId=" + userId +
-                ", item=" + item +
+                ", user=" + user +
+                ", items=" + items +
                 '}';
     }
 
     public static class Builder {
-        private Integer wishlistId;
-        private Integer userId;
-        private List<Product> item;
+        private int wishlistId;
+        private User user;
+        private List<Product> items;
 
-
-        public Builder wishlistId(Integer wishlistId) {
+        public Builder setWishlistId(int wishlistId) {
             this.wishlistId = wishlistId;
             return this;
         }
 
-        public Builder userId(Integer userId) {
-            this.userId = userId;
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
-        public Builder item(List<Product> item) {
-            this.item = item;
+        public Builder setItems(List<Product> items) {
+            this.items = items;
             return this;
         }
 
+        public Builder copy(Wishlist wishlist) {
+            this.wishlistId = wishlist.wishlistId;
+            this.user = wishlist.user;
+            this.items = wishlist.items;
+            return this;
+        }
 
         public Wishlist build() {
             return new Wishlist(this);
         }
     }
-
 }
-

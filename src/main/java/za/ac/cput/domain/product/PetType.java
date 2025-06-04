@@ -2,11 +2,17 @@ package za.ac.cput.domain.product;
 /*Oluhle Makhaye
 * 222419636*/
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class PetType {
+ @Id
  private int petTypeID;
  private String petTypeName;
 
- private PetType() {
+ protected PetType() {
 
  }
 

@@ -1,34 +1,46 @@
 package za.ac.cput.domain.product;
 
+import jakarta.persistence.*;
+
 import java.sql.Blob;
 import java.util.List;
 /*Oluhle Makhaye
 * 222419636
 * product class*/
+
+@Entity
 public class Product {
+    @Id
     private int productID;
     private String productName;
     private String description;
-    private Blob image;
+    @Lob
+    private byte[] productImage;
     private double rating;
     private double price;
     private int stock;
     private double weight;
+    @ManyToOne
+    @JoinColumn(name="brandID" , nullable=false)
     private Brand brand;
     private int lifeStageID;
     private int foodtypeID;
     private int petTypeID;
+    @ManyToMany
+    @JoinColumn(name="flavours")
     private List<Flavour> flavours;
+    @ManyToMany
+    @JoinColumn(name="foodCategory")
     private List<Category> categories;
 
-    private Product () {
+    protected Product () {
     }
 
     private Product(Builder builder) {
         productID = builder.productID;
         productName = builder.productName;
         description = builder.description;
-        image = builder.image;
+        productImage = builder.productImage;
         rating = builder.rating;
         price = builder.price;
         stock = builder.stock;
@@ -53,7 +65,7 @@ public class Product {
         return description;
     }
 
-    public Blob getImage() {return image;
+    public byte[] getImage() {return productImage;
     }
 
     public double getRating() {
@@ -102,7 +114,7 @@ public class Product {
                 "productID=" + productID +
                 ", productName='" + productName + '\'' +
                 ", description='" + description + '\'' +
-                ", image=" + image +
+                ", productImage=" + productImage +
                 ", rating=" + rating +
                 ", price=" + price +
                 ", stock=" + stock +
@@ -120,7 +132,7 @@ public class Product {
         private int productID;
         private String productName;
         private String description;
-        private Blob image;
+        private byte[] productImage;
         private double rating;
         private double price;
         private int stock;
@@ -148,8 +160,8 @@ public class Product {
             return this;
         }
 
-        public Builder setImage(Blob image) {
-            this.image = image;
+        public Builder setProductImage(byte[] productImage) {
+            this.productImage = productImage;
             return this;
         }
 
@@ -207,7 +219,7 @@ public class Product {
             this.productID = product.productID;
             this.productName = product.productName;
             this.description = product.description;
-            this.image = product.image;
+            this.productImage = product.productImage;
             this.rating = product.rating;
             this.price = product.price;
             this.stock = product.stock;

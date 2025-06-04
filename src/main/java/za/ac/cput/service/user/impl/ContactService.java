@@ -7,16 +7,14 @@ import za.ac.cput.repository.user.ContactRepository;
 import za.ac.cput.service.user.IContactService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ContactService implements IContactService {
 
-    @Autowired
-    private static IContactService service;
+    private ContactRepository repository;
 
     @Autowired
-    private ContactRepository repository;
+    public ContactService(ContactRepository repository) { this.repository = repository; }
 
     @Override
     public Contact create(Contact contact) {
@@ -44,13 +42,13 @@ public class ContactService implements IContactService {
         return repository.findAll();
     }
 
+    @Override
     public Contact findByEmail(String email) {
-        Optional<Contact> optional = repository.findByEmail(email);
-        return optional.orElse(null);
+        return repository.findByEmail(email);
     }
 
+    @Override
     public Contact findByPhone(String phone) {
-        Optional<Contact> optional = repository.findByPhone(phone);
-        return optional.orElse(null);
+        return repository.findByPhone(phone);
     }
 }

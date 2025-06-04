@@ -42,4 +42,10 @@ public class ContactController {
     public List<Contact> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/findByEmail/{email}")
+    public Contact findByEmail(@PathVariable String email) { return this.service.findByEmail(email); }
+
+    @GetMapping("findByPhone/{phone}")
+    public Contact findByPhone(@PathVariable String phone) { return this.service.findByPhone(phone); }
 }
