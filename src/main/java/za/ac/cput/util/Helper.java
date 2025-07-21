@@ -29,4 +29,5 @@ public class Helper {
 
 
     public static boolean isValidPrice(double price){ return price > 0; }
+    public static boolean isValidPrice(float price){ return price > 0; }
 }

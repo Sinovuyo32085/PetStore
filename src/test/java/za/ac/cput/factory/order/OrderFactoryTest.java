@@ -16,7 +16,7 @@ class OrderFactoryTest {
     void createOrder() {
         LocalDate orderDate = LocalDate.now();
         LocalDate deliveryDate = LocalDate.parse("2025-05-10");
-        OrderItem orderItem = OrderItemFactory.createOrder(1,1,100.00);
+        OrderItem orderItem = OrderItemFactory.createOrderItem(1,1,50,100,10);
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(orderItem);
         Status status = Status.Busy;
@@ -30,7 +30,7 @@ class OrderFactoryTest {
     void createOrderWithoutOrderDate() {
         LocalDate orderDate = LocalDate.now();
         LocalDate deliveryDate = LocalDate.parse("2025-05-10");
-        OrderItem orderItem = OrderItemFactory.createOrder(1,1,100.00);
+        OrderItem orderItem = OrderItemFactory.createOrderItem(1,1,50,100,10);
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(orderItem);
         Status status = Status.Busy;
@@ -43,7 +43,7 @@ class OrderFactoryTest {
     void createOrderWithInvalidDeliveryDate() {
         LocalDate orderDate = LocalDate.now();
         LocalDate deliveryDate = LocalDate.parse("2025-05-10");
-        OrderItem orderItem = OrderItemFactory.createOrder(1,1,100.00);
+        OrderItem orderItem = OrderItemFactory.createOrderItem(1,1,50,100,10);
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(orderItem);
         Status status = Status.Busy;
@@ -55,7 +55,7 @@ class OrderFactoryTest {
     void createOrderWithoutOrderItems() {
         LocalDate orderDate = LocalDate.now();
         LocalDate deliveryDate = LocalDate.parse("2025-05-10");
-        OrderItem orderItem = OrderItemFactory.createOrder(1,1,100.00);
+        OrderItem orderItem = OrderItemFactory.createOrderItem(1,1,50,100,10);
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(orderItem);
         Status status = Status.Busy;
@@ -68,7 +68,7 @@ class OrderFactoryTest {
     void createOrderWithInvalidStatus() {
         LocalDate orderDate = LocalDate.now();
         LocalDate deliveryDate = LocalDate.parse("2025-05-10");
-        OrderItem orderItem = OrderItemFactory.createOrder(1,1,100.00);
+        OrderItem orderItem = OrderItemFactory.createOrderItem(1,1,50,100,10);
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(orderItem);
         Status status = Status.Busy;
