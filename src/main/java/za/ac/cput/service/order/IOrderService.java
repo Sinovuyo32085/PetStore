@@ -1,20 +1,20 @@
-package za.ac.cput.repository.order;
+package za.ac.cput.service.order;
 
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.order.Order;
-import za.ac.cput.domain.order.OrderItem;
 import za.ac.cput.domain.order.Status;
+import za.ac.cput.service.IService;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface OrderRepository  extends JpaRepository<Order, Long> {
+public interface IOrderService extends IService<Order,Long> {
+    List<Order>getAll();
     Optional<Order> findByOrderDate(LocalDate orderDate);
+
     Optional<Order> findByDeliveryDate(LocalDate deliveryDate);
+
     Optional<Order> findByPrice(float price);
+
     Optional<Order> findByStatus(Status status);
 }

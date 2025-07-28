@@ -10,11 +10,11 @@ import za.ac.cput.util.Helper;
 
 public class OrderFactory {
     public static Order createOrder(
-            int orderID,
-            int userID,
+            long orderID,
+            long userID,
             LocalDate orderDate,
             LocalDate deliveryDate,
-            double totalPrice,
+            float price,
             List<OrderItem> items,
             Status status
     ){
@@ -29,7 +29,7 @@ public class OrderFactory {
              .setUserID(userID)
              .setOrderDate(orderDate)
              .setDeliveryDate(deliveryDate)
-             .setTotalPrice(totalPrice)
+             .setPrice(price)
              .setItems(items)
              .setStatus(status)
              .build();
